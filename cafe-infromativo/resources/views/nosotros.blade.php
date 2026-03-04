@@ -3,7 +3,7 @@
 @section('content')
 
 <h2>🏠 Nosotros</h2>
-<p>Somos un café ubicado en Cali, Valle del Cauca. Usamos granos del Eje Cafetero para ofrecer el mejor sabor colombiano.</p>
+<p>Somos un café ubicado en Pasto, Nariño. Usamos granos de cafe para ofrecer el mejor sabor colombiano.</p>
 
 <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" width="500" alt="Finca cafetera">
 
