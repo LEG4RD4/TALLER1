@@ -2,7 +2,7 @@
 @section('title', 'Menú')
 @section('content')
 
-<h2>☕ Menú</h2>
+<h2> Menú</h2>
 <p>Nuestras bebidas y productos disponibles:</p>
 
 <ul>

@@ -2,14 +2,14 @@
 @section('title', 'Nosotros')
 @section('content')
 
-<h2>🏠 Nosotros</h2>
+<h2>Nosotros</h2>
 <p>Somos un café ubicado en Pasto, Nariño. Usamos granos de cafe para ofrecer el mejor sabor colombiano.</p>
 
 <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500" width="500" alt="Finca cafetera">
 
 <hr>
 
-<h4>✉️ Formulario PQRS</h4>
+<h4> Formulario PQRS</h4>
 
 <br>
 <label>Nombre:</label><br>
@@ -32,6 +32,6 @@
 <button>Enviar</button>
 
 <hr>
-<p><strong>👨‍🎓 Integrantes:</strong> Miguel Legarda | Duvan Botina</p>
+<p><strong> Integrantes:</strong> Miguel Legarda | Duvan Botina</p>
 
 @endsection
