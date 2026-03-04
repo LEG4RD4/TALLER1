@@ -1,5 +1,4 @@
-routes/web.php
-Reemplazar el contenido por:
+
 <?php
 
 use Illuminate\Support\Facades\Route;
