@@ -2,31 +2,18 @@
 @section('title', 'Menú')
 @section('content')
 
-<h1 class="text-center mb-4">☕ Nuestro Menú</h1>
+<h2>☕ Menú</h2>
+<p>Nuestras bebidas y productos disponibles:</p>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card mb-3 shadow">
-            <div class="card-header bg-warning fw-bold">Bebidas Calientes</div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between">Café Americano <span>$5.000</span></li>
-                <li class="list-group-item d-flex justify-content-between">Cappuccino <span>$7.000</span></li>
-                <li class="list-group-item d-flex justify-content-between">Latte <span>$7.500</span></li>
-                <li class="list-group-item d-flex justify-content-between">Té Verde <span>$4.000</span></li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card mb-3 shadow">
-            <div class="card-header bg-warning fw-bold">Comidas</div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between">Croissant de mantequilla <span>$8.000</span></li>
-                <li class="list-group-item d-flex justify-content-between">Tostada con mermelada <span>$6.000</span></li>
-                <li class="list-group-item d-flex justify-content-between">Muffin de arándanos <span>$5.500</span></li>
-                <li class="list-group-item d-flex justify-content-between">Sandwich de jamón <span>$10.000</span></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<ul>
+    <li>Tinto - $2.000</li>
+    <li>Café Americano - $5.000</li>
+    <li>Cappuccino - $7.000</li>
+    <li>Latte - $7.500</li>
+    <li>Croissant - $8.000</li>
+    <li>Tostada con mermelada - $5.000</li>
+</ul>
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500" width="500" alt="Bebidas">
 
 @endsection
