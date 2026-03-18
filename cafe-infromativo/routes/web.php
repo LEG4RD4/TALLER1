@@ -28,4 +28,4 @@ Route::get('/', [PaginaController::class, 'inicio'])->name('inicio');
 Route::get('/menu', [PaginaController::class, 'menu'])->name('menu'); 
 Route::get('/nosotros', [PaginaController::class, 'nosotros'])->name('nosotros'); 
 Route::get('/contacto', [PaginaController::class, 'contacto'])->name('contacto'); 
-Route::get('/mensajes', [PaginaController::class, 'mensajes'])->name('mensajes'); 
+Route::get('/mensaje', [PaginaController::class, 'mensaje'])->name('mensaje'); 
