@@ -8,6 +8,6 @@ class PaginaController extends Controller
 {
     public function inicio()
     {
-    return view('inicio');
+    return view('nosotros');
     }
 }
