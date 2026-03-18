@@ -1,7 +1,8 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PqrsController;
+use App\Http\Controllers\PaginaController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -18,3 +19,5 @@ Route::get('/nosotros', function () {
 Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
+
+Route::get('/', [PaginaController::class, 'nosotros'])->name('nosotros'); 

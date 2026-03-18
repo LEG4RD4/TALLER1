@@ -35,24 +35,31 @@
 <div class="pqrs">
     <h4>✉️ Formulario PQRS</h4>
 
-    <label>Nombre completo</label>
-    <input type="text" placeholder="Tu nombre">
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
 
-    <label>Correo electrónico</label>
-    <input type="email" placeholder="correo@ejemplo.com">
+    <form action="{{ route('pqrs.store') }}" method="POST">
+        @csrf
 
-    <label>Tipo de solicitud</label>
-    <select>
-        <option>Petición</option>
-        <option>Queja</option>
-        <option>Reclamo</option>
-        <option>Sugerencia</option>
-    </select>
+        <label>Nombre completo</label>
+        <input type="text" name="nombres" placeholder="Tu nombre">
 
-    <label>Mensaje</label>
-    <textarea rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <label>Correo electrónico</label>
+        <input type="email" name="correo" placeholder="correo@ejemplo.com">
 
-    <button>Enviar solicitud</button>
+        <label>Tipo de solicitud</label>
+        <select name="tipo">
+            <option value="Peticion">Petición</option>
+            <option value="Queja">Queja</option>
+            <option value="Felicitaciones">Felicitaciones</option>
+        </select>
+
+        <label>Mensaje</label>
+        <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+
+        <button type="submit">Enviar solicitud</button>
+    </form>
 </div>
 
 <div class="integrantes">
