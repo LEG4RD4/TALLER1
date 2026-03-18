@@ -24,8 +24,8 @@ Route::get('/mensajes', function () {
     return view('mensajes');
 })->name('mensajes');
 
-Route::post('/', [PaginaController::class, 'inicio'])->name('inicio'); 
-Route::post('/menu', [PaginaController::class, 'menu'])->name('menu'); 
-Route::post('/nosotros', [PaginaController::class, 'nosotros'])->name('nosotros'); 
-Route::post('/contacto', [PaginaController::class, 'contacto'])->name('contacto'); 
-Route::post('/mensajes', [PaginaController::class, 'mensajes'])->name('mensajes'); 
+Route::get('/', [PaginaController::class, 'inicio'])->name('inicio'); 
+Route::get('/menu', [PaginaController::class, 'menu'])->name('menu'); 
+Route::get('/nosotros', [PaginaController::class, 'nosotros'])->name('nosotros'); 
+Route::get('/contacto', [PaginaController::class, 'contacto'])->name('contacto'); 
+Route::get('/mensajes', [PaginaController::class, 'mensajes'])->name('mensajes'); 
