@@ -20,4 +20,4 @@ Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
 
-Route::get('/', [PaginaController::class, 'nosotros'])->name('nosotros'); 
+Route::post('/pqrs', [PaginaController::class, 'store'])->name('pqrs.store'); 
