@@ -20,4 +20,12 @@ Route::get('/contacto', function () {
     return view('contacto');
 })->name('contacto');
 
-Route::post('/', [PaginaController::class, 'nosotros'])->name('nosotros'); 
+Route::get('/mensajes', function () {
+    return view('mensajes');
+})->name('mensajes');
+
+Route::post('/', [PaginaController::class, 'inicio'])->name('inicio'); 
+Route::post('/menu', [PaginaController::class, 'menu'])->name('menu'); 
+Route::post('/nosotros', [PaginaController::class, 'nosotros'])->name('nosotros'); 
+Route::post('/contacto', [PaginaController::class, 'contacto'])->name('contacto'); 
+Route::post('/mensajes', [PaginaController::class, 'mensajes'])->name('mensajes'); 
