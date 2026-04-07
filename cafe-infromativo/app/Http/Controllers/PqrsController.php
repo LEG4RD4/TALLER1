@@ -10,10 +10,10 @@ class PqrsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombre'  => 'required|string|max:255',
-            'correo'  => 'required|email|max:255',
-            'tipo'    => 'required|in:Petición,Queja,Reclamo,Sugerencia',
-            'mensaje' => 'required|string|min:10',
+    'nombres' => 'required|string|max:255',  // ← nombres
+    'correo'  => 'required|email|max:255',
+    'tipo'    => 'required|in:Petición,Queja,Reclamo,Sugerencia',
+    'mensaje' => 'required|string|min:10',
         ], [
             'nombre.required'  => 'El nombre es obligatorio.',
             'correo.required'  => 'El correo es obligatorio.',

@@ -15,12 +15,21 @@
         width: 100%; padding: 10px; border: 1px solid #ccc;
         border-radius: 6px; font-size: 15px; font-family: Georgia, serif;
     }
+    .pqrs input.is-invalid, .pqrs select.is-invalid, .pqrs textarea.is-invalid {
+        border-color: #e53e3e;
+    }
+    .error-msg { color: #e53e3e; font-size: 13px; margin-top: 4px; }
     .pqrs button {
         margin-top: 20px; padding: 12px 30px;
         background-color: #3b2a1a; color: #f5c842;
         border: none; border-radius: 6px; font-size: 16px; cursor: pointer;
     }
     .pqrs button:hover { background-color: #5a3e28; }
+
+    .alert-success {
+        background: #d4edda; color: #155724; border: 1px solid #c3e6cb;
+        padding: 14px 20px; border-radius: 8px; margin-bottom: 20px; font-size: 15px;
+    }
 
     .integrantes { text-align: center; margin-top: 40px; padding: 20px; background: #3b2a1a; color: #f5c842; border-radius: 10px; }
 </style>
@@ -35,24 +44,58 @@
 <div class="pqrs">
     <h4>✉️ Formulario PQRS</h4>
 
-    <label>Nombre completo</label>
-    <input type="text" placeholder="Tu nombre">
+    @if(session('pqrs_success'))
+        <div class="alert-success">{{ session('pqrs_success') }}</div>
+    @endif
 
-    <label>Correo electrónico</label>
-    <input type="email" placeholder="correo@ejemplo.com">
+    <form action="{{ route('pqrs.store') }}" method="POST">
+        @csrf
 
-    <label>Tipo de solicitud</label>
-    <select>
-        <option>Petición</option>
-        <option>Queja</option>
-        <option>Reclamo</option>
-        <option>Sugerencia</option>
-    </select>
+        {{-- ✅ name="nombres" coincide con la columna de la BD --}}
+        <label for="nombres">Nombre completo</label>
+        <input
+            type="text"
+            id="nombres"
+            name="nombres"
+            placeholder="Tu nombre"
+            value="{{ old('nombres') }}"
+            class="{{ $errors->has('nombres') ? 'is-invalid' : '' }}"
+        >
+        @error('nombres') <p class="error-msg">{{ $message }}</p> @enderror
 
-    <label>Mensaje</label>
-    <textarea rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <label for="correo">Correo electrónico</label>
+        <input
+            type="email"
+            id="correo"
+            name="correo"
+            placeholder="correo@ejemplo.com"
+            value="{{ old('correo') }}"
+            class="{{ $errors->has('correo') ? 'is-invalid' : '' }}"
+        >
+        @error('correo') <p class="error-msg">{{ $message }}</p> @enderror
 
-    <button>Enviar solicitud</button>
+        <label for="tipo">Tipo de solicitud</label>
+        <select id="tipo" name="tipo" class="{{ $errors->has('tipo') ? 'is-invalid' : '' }}">
+            @foreach(['Petición', 'Queja', 'Reclamo', 'Sugerencia'] as $opcion)
+                <option value="{{ $opcion }}" {{ old('tipo') === $opcion ? 'selected' : '' }}>
+                    {{ $opcion }}
+                </option>
+            @endforeach
+        </select>
+        @error('tipo') <p class="error-msg">{{ $message }}</p> @enderror
+
+        <label for="mensaje">Mensaje</label>
+        <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="5"
+            placeholder="Escribe tu mensaje aquí..."
+            class="{{ $errors->has('mensaje') ? 'is-invalid' : '' }}"
+        >{{ old('mensaje') }}</textarea>
+        @error('mensaje') <p class="error-msg">{{ $message }}</p> @enderror
+
+        <button type="submit">Enviar solicitud</button>
+    </form>
 </div>
 
 <div class="integrantes">
