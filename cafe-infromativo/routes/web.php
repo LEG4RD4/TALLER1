@@ -8,6 +8,7 @@ Route::get('/',         [PaginaController::class, 'inicio'])->name('inicio');
 Route::get('/menu',     [PaginaController::class, 'menu'])->name('menu');
 Route::get('/nosotros', [PaginaController::class, 'nosotros'])->name('nosotros');
 Route::get('/contacto', [PaginaController::class, 'contacto'])->name('contacto');
-Route::get('/mensajes', [PaginaController::class, 'mensaje'])->name('mensajes');
+Route::get('/mensajes', [PaginaController::class, 'mensajes'])->name('mensaje');
 
 Route::post('/pqrs', [PqrsController::class, 'store'])->name('pqrs.store');
+Route::get('/pqrs', [PqrsController::class, 'index'])->name('mensajes');

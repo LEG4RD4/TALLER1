@@ -25,7 +25,7 @@ class PaginaController extends Controller
     {
         return view('contacto');
     }
-    public function mensaje()
+    public function mensajes()
     {
         return view('mensaje');
     }
