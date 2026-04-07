@@ -13,7 +13,7 @@ class PqrsController extends Controller
             'nombre'  => 'required|string|max:255',
             'correo'  => 'required|email|max:255',
             'tipo'    => 'required|in:Petición,Queja,Reclamo,Sugerencia',
-            'mensajes' => 'required|string|min:10',
+            'mensaje' => 'required|string|min:10',
         ], [
             'nombre.required'  => 'El nombre es obligatorio.',
             'correo.required'  => 'El correo es obligatorio.',
@@ -30,7 +30,7 @@ class PqrsController extends Controller
 
     public function index()
     {
-        $mensajes = pqrs::orderby('id','desc')->get();
-        return view('mensajes',compact('mensajes'));
+        $mensaje = Pqrs::orderBy('id', 'desc')->get();
+        return view('mensajes', compact('mensaje'));
     }
 }

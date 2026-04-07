@@ -9,24 +9,28 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombre</th>
             <th>Correo</th>
             <th>Tipo</th>
             <th>Mensaje</th>
+            <th>Fecha</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($mensajes as $mensaje)
+        @forelse($mensaje as $item)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->nombre }}</td>
+                <td>{{ $item->correo }}</td>
+                <td>{{ $item->tipo }}</td>
+                <td>{{ $item->mensaje }}</td>
+                <td>{{ $item->created_at->format('d/m/Y H:i') }}</td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="6" class="text-center">No hay mensajes aún.</td>
+            </tr>
+        @endforelse
     </tbody>
 </table>
 @endsection

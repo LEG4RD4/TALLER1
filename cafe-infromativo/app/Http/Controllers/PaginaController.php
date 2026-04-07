@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pqrs; 
 
 class PaginaController extends Controller
 {
@@ -25,9 +26,11 @@ class PaginaController extends Controller
     {
         return view('contacto');
     }
-    public function mensajes()
-    {
-        return view('mensaje');
-    }
 
+   public function mensajes()
+{
+    $mensaje = Pqrs::orderBy('id', 'desc')->get(); 
+    return view('mensajes', compact('mensaje'));
+
+}
 }
