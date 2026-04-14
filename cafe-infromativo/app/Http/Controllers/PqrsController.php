@@ -50,6 +50,7 @@ class PqrsController extends Controller
             'correos'   => $request->correos,
             'tipo'      => $request->tipo,
             'mensaje'   => $request->mensaje,
+            'acepto'    => $request->has('acepto'),
         ]);
         return redirect()->route('mensaje')->with('success', 'Mensaje actualizado correctamente');
     }
