@@ -52,6 +52,9 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
     background: #1a2e1a; border: 1px solid #2a5a2a; color: #7fc97f;
     padding: 14px 20px; border-radius: 6px; font-size: 14px; margin-bottom: 24px;
 }
+.acepto-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+.acepto-wrap input { width: auto; }
+.acepto-wrap label { font-size: 13px; color: #a07850; text-transform: none; letter-spacing: 0; }
 
 .integrantes { text-align: center; margin-top: 40px; padding: 20px; background: #3b2a1a; color: #f5c842; border-radius: 10px; }
 </style>
@@ -65,7 +68,6 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
 
 <div class="pqrs-wrap">
 
-    {{-- BANNER CON IMAGEN DE TIENDA --}}
     <div class="pqrs-banner">
         <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1200" alt="Tienda de café">
         <div class="pqrs-banner-text">
@@ -77,8 +79,9 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
 
     <div class="pqrs-body">
 
-        @if(session('pqrs_success'))
-            <div class="alert-success">{{ session('pqrs_success') }}</div>
+        {{-- Alerta de éxito --}}
+        @if(session('success'))
+            <div class="alert-success">{{ session('success') }}</div>
         @endif
 
         <form action="{{ route('pqrs.store') }}" method="POST">
@@ -86,27 +89,35 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
 
             <div class="field-row">
                 <div class="field-group">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" value="{{ old('nombre') }}">
-                    @error('nombre') <p class="error-msg">{{ $message }}</p> @enderror
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" name="nombres" placeholder="Tu nombre" value="{{ old('nombres') }}">
+                    @error('nombres') <p class="error-msg">{{ $message }}</p> @enderror
                 </div>
                 <div class="field-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" value="{{ old('correo') }}">
-                    @error('correo') <p class="error-msg">{{ $message }}</p> @enderror
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" value="{{ old('apellidos') }}">
+                    @error('apellidos') <p class="error-msg">{{ $message }}</p> @enderror
                 </div>
+            </div>
+
+            <div class="field-group">
+                <label for="correos">Correo electrónico</label>
+                <input type="email" id="correos" name="correos" placeholder="correo@ejemplo.com" value="{{ old('correos') }}">
+                @error('correos') <p class="error-msg">{{ $message }}</p> @enderror
             </div>
 
             <div class="field-group">
                 <label>Tipo de solicitud</label>
                 <div class="tipo-pills" id="tipo-pills">
-                    @foreach(['Petición', 'Queja', 'Reclamo', 'Sugerencia'] as $op)
-                        <div class="pill {{ (old('tipo', 'Petición') === $op) ? 'active' : '' }}" data-val="{{ $op }}">
+                    {{-- Corregimos las opciones para que coincidan con la validación: in:Queja,Petición,Felicitación --}}
+                    @foreach(['Queja', 'Petición', 'Felicitación'] as $op)
+                        <div class="pill {{ (old('tipo', 'Queja') === $op) ? 'active' : '' }}" data-val="{{ $op }}">
                             {{ $op }}
                         </div>
                     @endforeach
                 </div>
-                <input type="hidden" id="tipo" name="tipo" value="{{ old('tipo', 'Petición') }}">
+                {{-- Este input hidden es el que realmente envía el valor al controlador --}}
+                <input type="hidden" id="tipo" name="tipo" value="{{ old('tipo', 'Queja') }}">
                 @error('tipo') <p class="error-msg">{{ $message }}</p> @enderror
             </div>
 
@@ -116,6 +127,13 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
                 <label for="mensaje">Mensaje</label>
                 <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí...">{{ old('mensaje') }}</textarea>
                 @error('mensaje') <p class="error-msg">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="acepto-wrap">
+                {{-- Importante: name="acepto" para que el controlador lo valide --}}
+                <input type="checkbox" id="acepto" name="acepto" value="1" {{ old('acepto') ? 'checked' : '' }}>
+                <label for="acepto">Acepto los términos y condiciones</label>
+                @error('acepto') <p class="error-msg">{{ $message }}</p> @enderror
             </div>
 
             <button type="submit" class="btn-enviar">Enviar solicitud</button>
@@ -130,6 +148,7 @@ h2 { font-size: 32px; margin-bottom: 20px; border-bottom: 3px solid #f5c842; pad
 </div>
 
 <script>
+// Lógica para que las "pills" funcionen y marquen el tipo correcto
 document.querySelectorAll('.pill').forEach(pill => {
     pill.addEventListener('click', () => {
         document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));

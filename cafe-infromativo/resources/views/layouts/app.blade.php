@@ -5,7 +5,6 @@
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -24,10 +23,8 @@
         <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Menú</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('nosotros') }}">Nosotros</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('contacto') }}">Contacto</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('mensaje') }}">mensaje</a></li>
-       
-
-
+        {{-- Línea corregida aquí abajo --}}
+        <li class="nav-item"><a class="nav-link" href="{{ route('mensajes.index') }}">Mensajes</a></li>
       </ul>
     </div>
   </div>
@@ -38,7 +35,7 @@
 </div>
 
 <footer class="bg-dark text-white text-center p-3">
-    © 2026 Proyecto Académico - Programación Avanzada  Miguel Legarda / Duvan Botina
+    © 2026 Proyecto Académico - Programación Avanzada | Miguel Legarda / Duvan Botina
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

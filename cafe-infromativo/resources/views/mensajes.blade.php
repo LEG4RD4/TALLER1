@@ -11,7 +11,7 @@
             <th>ID</th>
             <th>Nombres</th>
             <th>Apellidos</th>
-            <th>Correo</th>
+            <th>Correos</th>
             <th>Tipo</th>
             <th>Mensaje</th>
             <th>Fecha</th>
@@ -19,12 +19,12 @@
         </tr>
     </thead>
     <tbody>
-        @forelse($mensaje as $item)
+        @forelse($mensajes as $item)
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nombres }}</td>
                 <td>{{ $item->apellidos }}</td>
-                <td>{{ $item->correos }}</td>
+                <td>{{ $item->correo }}</td>
                 <td>{{ $item->tipo }}</td>
                 <td>{{ $item->mensaje }}</td>
                 <td>{{ $item->created_at->format('d/m/Y H:i') }}</td>
